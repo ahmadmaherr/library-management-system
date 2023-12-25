@@ -40,12 +40,12 @@ export const borrowBook = async (req, res)=>{
             });
 
             res.json({
-                status: "Success"
+                status: 200
             });
             
         }else{
             res.json({
-                status: "Error",
+                status: 200,
                 message: "book not found"
             });
         }
@@ -54,7 +54,7 @@ export const borrowBook = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -97,12 +97,12 @@ export const returnBook = async (req, res)=>{
             });
 
             res.json({
-                status: "Success"
+                status: 200
             });
             
         }else{
             res.json({
-                status: "Error",
+                status: 400,
                 message: "book not found"
             });
         }
@@ -111,7 +111,7 @@ export const returnBook = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -129,7 +129,7 @@ export const getBooks = async (req, res)=>{
             };
         }else{
             res.json({
-                status: "Error",
+                status: 200,
                 message: "no user found"
             });
         }
@@ -144,12 +144,12 @@ export const getBooks = async (req, res)=>{
 
         if(books){
             res.json({
-                status: "Success",
+                status: 200,
                 books
             });
         }else{
             res.json({
-                status: "Error",
+                status: 200,
                 message: "No books found"
             });
         }
@@ -158,7 +158,7 @@ export const getBooks = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }

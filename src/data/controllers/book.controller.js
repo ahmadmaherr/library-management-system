@@ -26,7 +26,7 @@ export const createBook = async (req, res)=>{
         });
 
         res.json({
-            status: "Success",
+            status: 200,
             book
         });
 
@@ -34,7 +34,7 @@ export const createBook = async (req, res)=>{
         res.json("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -54,12 +54,12 @@ export const getBook = async (req, res)=>{
 
         if(book){
             res.json({
-                status: "Success",
+                status: 200,
                 book
             });
         }else{
             res.json({
-                status: "Success",
+                status: 200,
                 message: "Book not found"
             });
         }
@@ -68,7 +68,7 @@ export const getBook = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -99,12 +99,12 @@ export const getAllBooks = async (req, res)=>{
 
         if(books){
             res.json({
-                status: "Success",
+                status: 200,
                 books
             });
         }else{
             res.json({
-                status: "Error",
+                status: 200,
                 message: "No books found"
             });
         }
@@ -113,7 +113,7 @@ export const getAllBooks = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -133,12 +133,12 @@ export const getOverdueBooks = async (req, res)=>{
 
         if(overdueBooks){
             res.json({
-                status: "Success",
+                status: 200,
                 overdueBooks
             });
         }else{
             res.json({
-                status: "Error",
+                status: 200,
                 message: "No books found"
             });
         }
@@ -147,7 +147,7 @@ export const getOverdueBooks = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -190,11 +190,11 @@ export const updateBook = async (req, res)=>{
 
         if(updateBook[0]){
             res.json({
-                status: "Success",
+                status: 200,
             });
         }else{
             res.json({
-                status: "Error",
+                status: 200,
                 message: "book not found",
             });
         }
@@ -203,7 +203,7 @@ export const updateBook = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -219,11 +219,11 @@ export const deleteBook = async (req, res)=>{
 
         if(deleteBook === 1){
             res.json({
-                status: "Success",
+                status: 200,
             });
         }else{
             res.json({
-                status: "error",
+                status: 200,
                 message: "book not found"
             });
         }
@@ -232,7 +232,7 @@ export const deleteBook = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -247,11 +247,11 @@ export const deleteBook = async (req, res)=>{
 
 //         if(deleteAllBooks === 1){
 //             res.json({
-//                 status: "Success",
+//                 status: 200,
 //             });
 //         }else{
 //             res.json({
-//                 status: "error",
+//                 status: 200,
 //                 message: "No Books Found"
 //             });
 //         }
@@ -260,7 +260,7 @@ export const deleteBook = async (req, res)=>{
 //         console.log("Something went wrong, " + err.message);
 
 //         res.json({
-//             status: "Error",
+//             status: 400,
 //             message: "Something went wrong, " + err.message
 //         });
 //     }

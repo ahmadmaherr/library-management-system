@@ -31,7 +31,7 @@ export const createBorrower = async (req, res)=>{
 
         }else{
             res.json({
-                status: "Error",
+                status: 200,
                 message: "email already in use"
             });
         }
@@ -40,7 +40,7 @@ export const createBorrower = async (req, res)=>{
         res.json("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -59,12 +59,12 @@ export const getBorrower = async (req, res)=>{
 
         if(borrower){
             res.json({
-                status: "Success",
+                status: 200,
                 borrower
             });
         }else{
             res.json({
-                status: "Success",
+                status: 200,
                 message: "User not found"
             });
         }
@@ -73,7 +73,7 @@ export const getBorrower = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -102,12 +102,12 @@ export const getAllBorrowers = async (req, res)=>{
 
         if(borrowers){
             res.json({
-                status: "Success",
+                status: 200,
                 borrowers
             });
         }else{
             res.json({
-                status: "Error",
+                status: 200,
                 message: "No borrowers found"
             });
         }
@@ -116,7 +116,7 @@ export const getAllBorrowers = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -136,11 +136,11 @@ export const updateBorrower = async (req, res)=>{
 
         if(updateBorrower[0]){
             res.json({
-                status: "Success",
+                status: 200,
             });
         }else{
             res.json({
-                status: "Error",
+                status: 200,
                 message: "Borrower not found",
             });
         }
@@ -149,7 +149,7 @@ export const updateBorrower = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -165,11 +165,11 @@ export const deleteBorrower = async (req, res)=>{
 
         if(deleteBorrower === 1){
             res.json({
-                status: "Success",
+                status: 200,
             });
         }else{
             res.json({
-                status: "error",
+                status: 200,
                 message: "Borrower not found"
             });
         }
@@ -178,7 +178,7 @@ export const deleteBorrower = async (req, res)=>{
         console.log("Something went wrong, " + err.message);
 
         res.json({
-            status: "Error",
+            status: 400,
             message: "Something went wrong, " + err.message
         });
     }
@@ -193,11 +193,11 @@ export const deleteBorrower = async (req, res)=>{
 
 //         if(deleteAllBorrowers === 1){
 //             res.json({
-//                 status: "Success",
+//                 status: 200,
 //             });
 //         }else{
 //             res.json({
-//                 status: "error",
+//                 status: 200,
 //                 message: "No Borrowers Found"
 //             });
 //         }
@@ -206,7 +206,7 @@ export const deleteBorrower = async (req, res)=>{
 //         console.log("Something went wrong, " + err.message);
 
 //         res.json({
-//             status: "Error",
+//             status: 400,
 //             message: "Something went wrong, " + err.message
 //         });
 //     }
