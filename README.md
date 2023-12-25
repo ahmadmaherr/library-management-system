@@ -16,13 +16,15 @@ This project require some prequesites and dependenscies to be installed, you can
 
 ## Install
 
-1. Clone the repo
+1. Clone the repo with the command:
+
    git clone https://github.com/ahmadmaherr/library-management-system
    
 
 2. Install dependenscies
 
    npm install
+
 
 3. Create databases
 
@@ -60,20 +62,21 @@ This project require some prequesites and dependenscies to be installed, you can
    JWT_SECRET=jwtsecretkey
 
 
-
 6. Run Migrations
     run:
     npm run migrate:up
 
     open package.json file and change line 5 from '"type": "commonjs",' to '"type": "module",'
 
+
 7. Run development server using docker compose using this command:
 
    docker-compose up 
 
-8. Run development server using docker compose using this command:
+
+8. Run development server using nodemon by following thoses steps:
       
-      change .env to: 
+   change .env to: 
          DB_MYSQL_HOST=localhost
          DB_MYSQL_PORT=3306
          DB_MYSQL_USER=root
@@ -81,11 +84,11 @@ This project require some prequesites and dependenscies to be installed, you can
          DB_MYSQL_DATABASE_NAME=db_library_management_system
          DB_MYSQL_DIALECT=mysql
 
-      and then run:
+   then run:
 
          nodemon start
 
-9. Testing
+9. Run unit tests using the following command:
 
    npm run test
 
