@@ -92,6 +92,9 @@ This project require some prequesites and dependenscies to be installed, you can
 
    npm run test
 
+### Rate Limiting
+
+The API is equipped with rate limiting to ensure fair usage and prevent abuse with 10 requests per minute max.
 
 #### Ports
 
@@ -458,9 +461,7 @@ on browser: downloaded CSV file
 
 on postman: CSV file code that needs to be saved with postman
 
-### Rate Limiting
 
-The API is equipped with rate limiting to ensure fair usage and prevent abuse with 10 requests per minute max.
 
 
 
