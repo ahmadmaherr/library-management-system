@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  db:
+    build: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: db_library_management_system
+    restart: always
+    container_name: mydb
+
+  web:
+    build: .
+    environment:
+    - MYSQL_ROOT_PASSWORD=${DB_MYSQL_PASSWORD}
+    - MYSQL_DATABASE=${DB_MYSQL_DATABASE_NAME}
+    - MYSQL_USER=${DB_MYSQL_USER}
+    - MYSQL_PASSWORD=${DB_MYSQL_PASSWORD}
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    restart: on-failure

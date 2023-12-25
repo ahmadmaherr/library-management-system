@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "root",
+    "password": "1234",
+    "database": "db_library_management_system",
+    "host": "mydb",
+    "dialect": "mysql"
+  }
+}
