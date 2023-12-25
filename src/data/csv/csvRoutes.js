@@ -9,7 +9,7 @@ import {
 
 const csvRoutes = (app) => {
   app.get("/export-admin-data", async function(req, res) {
-    var type = req.body.type;
+    let type = req.body.type;
     let from = req.body.from;
     let to = req.body.to;
     try {

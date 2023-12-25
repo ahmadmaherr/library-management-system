@@ -121,14 +121,346 @@ Schema Diagram:
 | returnDate: DATE    |
 | createdAt: DATE     |
 | updatedAt: DATE     |
-| BorrowerId: INTEGER |
-| BookId: INTEGER     |
+| borrowerId: INTEGER |
+| bookId: INTEGER     |
 +---------------------+
 
 
 - An Author can have many Books. This is represented by the AuthorId foreign key in the Book model.
 - A Book belongs to one Author. This is represented by the AuthorId foreign key in the Book model.
-- A Borrower can have many Borrows. This is represented by the BorrowerId foreign key in the Borrow model.
-- A Borrow belongs to one Borrower. This is represented by the BorrowerId foreign key in the Borrow model.
-- A Borrow can have one Book. This is represented by the BookId foreign key in the Borrow model.
-- A Book can be borrowed multiple times. This is represented by the BookId foreign key in the Borrow model.
+- A Borrower can have many Borrows. This is represented by the borrowerId foreign key in the Borrow model.
+- A Borrow belongs to one Borrower. This is represented by the borrowerId foreign key in the Borrow model.
+- A Borrow can have one Book. This is represented by the bookId foreign key in the Borrow model.
+- A Book can be borrowed multiple times. This is represented by the bookId foreign key in the Borrow model.
+
+Certainly! Below is a documentation for the provided API endpoints with expected inputs and outputs:
+
+### Book Endpoints:
+
+#### 1. Get All Books
+- **Endpoint:** `GET /api/books`
+- **Description:** Retrieve a list of all books.
+- **Expected Output (Example):**
+  ```json
+   {
+      "status": 200,
+      "books": [
+         {
+            "id": 1,
+            "title": "Introduction to Programming",
+            "ISBN": "123-456-7890123",
+            "availableQuantity": 100,
+            "createdAt": "2023-01-01T12:00:00Z",
+            "updatedAt": "2023-01-01T12:00:00Z"
+         },
+      // ... other books
+   ]}
+
+
+  ```
+
+#### 2. Create Book
+- **Endpoint:** `POST /api/books`
+- **Description:** Create a new book.
+- **Expected Input:**
+  ```json
+  {
+    "title": "Web Development Basics",
+    "ISBN": "234-567-8901234",
+    "availableQuantity": 75
+  }
+  ```
+- **Expected Output (Example):**
+  ```json
+   {
+      "status": 200,
+      "book": {
+         "id": 2,
+         "title": "Web Development Basics",
+         "ISBN": "234-567-8901234",
+         "availableQuantity": 75,
+         "createdAt": "2023-04-15T12:00:00Z",
+         "updatedAt": "2023-04-15T12:00:00Z"
+   }}
+  ```
+
+#### 3. Get Book by ID
+- **Endpoint:** `GET api/books/:id`
+- **Description:** Retrieve details of a specific book.
+- **Expected Output (Example):**
+  ```json
+   {
+      "status": 200,
+      "book": {
+         "id": 2,
+         "title": "Web Development Basics",
+         "ISBN": "234-567-8901234",
+         "availableQuantity": 75,
+         "createdAt": "2023-04-15T12:00:00Z",
+         "updatedAt": "2023-04-15T12:00:00Z"
+   }}
+  ```
+
+#### 4. Update Book
+- **Endpoint:** `PATCH api/books/:id`
+- **Description:** Update information for a specific book.
+- **Expected Input:**
+  ```json
+  {
+    "title": "Updated Title",
+    "ISBN": "updated-ISBN",
+    "availableQuantity": 50
+  }
+  ```
+- **Expected Output (Example):**
+  ```json
+   {
+      "status": 200,
+      "book": {
+         "id": 2,
+         "title": "Web Development Basics",
+         "ISBN": "234-567-8901234",
+         "availableQuantity": 75,
+         "createdAt": "2023-04-15T12:00:00Z",
+         "updatedAt": "2023-04-15T12:00:00Z"
+   }}
+  ```
+
+#### 5. Delete Book
+- **Endpoint:** `DELETE /:id`
+- **Description:** Delete a specific book.
+- **Expected Output (Example):**
+  ```json
+  {"status": 200}
+  ```
+
+
+### Borrower Endpoints:
+
+#### 1. Get All Borrowers
+- **Endpoint:** `GET /api/borrowers`
+- **Description:** Retrieve a list of all borrowers.
+- **Expected Output (Example):**
+  ```json
+     {
+      "status": 200,
+      "borrowers":
+            [
+               {
+                  "id": 1,
+                  "name": "Alice Johnson",
+                  "email": "alice@email.com",
+                  "registrationDate": "2023-01-01",
+                  "createdAt": "2023-01-01T12:00:00Z",
+                  "updatedAt": "2023-01-01T12:00:00Z"
+               },
+               // ... other borrowers
+            ]
+     }
+  ```
+
+#### 2. Create Borrower
+- **Endpoint:** `POST /api/borrowers`
+- **Description:** Create a new borrower.
+- **Expected Input:**
+  ```json
+  {
+    "name": "John Doe",
+    "password": "securePassword",
+    "email": "john@email.com"
+  }
+  ```
+- **Expected Output (Example):**
+  ```json
+      {
+      "status": 200,
+      "borrower":
+            {
+               "id": 2,
+               "name": "John Doe",
+               "email": "john@email.com",
+               "registrationDate": "2023-04-15",
+               "createdAt": "2023-04-15T12:00:00Z",
+               "updatedAt": "2023-04-15T12:00:00Z"
+            }
+      }
+  ```
+
+#### 3. Get Borrower by ID
+- **Endpoint:** `GET /api/borrowers/:id`
+- **Description:** Retrieve details of a specific borrower.
+- **Expected Output (Example):**
+  ```json
+   {
+      "status": 200,
+      "borrower":
+         {
+            "id": 2,
+            "name": "John Doe",
+            "email": "john@email.com",
+            "registrationDate": "2023-04-15",
+            "createdAt": "2023-04-15T12:00:00Z",
+            "updatedAt": "2023-04-15T12:00:00Z"
+         }
+   }
+  ```
+
+#### 4. Update Borrower
+- **Endpoint:** `PATCH /api/borrowers/:id`
+- **Description:** Update information for a specific borrower.
+- **Expected Input:**
+  ```json
+  {
+    "name": "Updated Name",
+    "password": "newSecurePassword",
+    "email": "updated@email.com"
+  }
+  ```
+- **Expected Output (Example):**
+  ```json
+   {
+      "status": 200,
+      "borrower":
+         {
+            "id": 2,
+            "name": "John Doe",
+            "email": "john@email.com",
+            "registrationDate": "2023-04-15",
+            "createdAt": "2023-04-15T12:00:00Z",
+            "updatedAt": "2023-04-15T12:00:00Z"
+         }
+   }
+  ```
+
+#### 5. Delete Borrower
+- **Endpoint:** `DELETE /api/borrowers/:id`
+- **Description:** Delete a specific borrower.
+  ```json
+  {"status": 200}
+  ```
+
+  ### Borrow Process Endpoints:
+
+#### 1. Borrow Book
+- **Endpoint:** `POST api/borrowBook/borrowBook/:bookId`
+- **Description:** Borrow a book.
+- **Expected Input:**
+  ```json
+  {
+    "borrowerId": 1,
+    "bookId": 1,
+    "returnDate": "2023-05-15"
+  }
+  ```
+- **Expected Output (Example):**
+  ```json
+  {"status": 200}
+  ```
+
+#### 2. Return Book
+- **Endpoint:** `POST api/borrowBook/returnBook/:bookId`
+- **Description:** Return a borrowed book.
+- **Expected Input:**
+  ```json
+  {
+    "borrowId": 1
+  }
+  ```
+- **Expected Output (Example):**
+  ```json
+  {"status": 200}
+  ```
+
+#### 3. Get Books
+- **Endpoint:** `GET api/borrowBook/getBooks`
+- **Description:** Retrieve a list of all available books for a specific burrower.
+- **Expected Output (Example):**
+  ```json
+   {
+      "status": 200,
+      "books": [
+         {
+            "id": 1,
+            "title": "Introduction to Programming",
+            "ISBN": "123-456-7890123",
+            "availableQuantity": 100,
+            "createdAt": "2023-01-01T12:00:00Z",
+            "updatedAt": "2023-01-01T12:00:00Z"
+         },
+      // ... other books
+   ]}
+  ```
+
+  #### 4. Get Over Due Book Borrows
+- **Endpoint:** `GET api/getOverdueBooks`
+- **Description:** Retrieve a list of all borrows that are overdue
+- **Expected Output (Example):**
+  ```json
+   {
+      "status": 200,
+      "borrows": [
+            {
+               "id": 1,
+               "BorrowerId": 1,
+               "BookId": 1,
+               "borrowDate": "2023-04-15",
+               "returnDate": "2023-05-15",
+               "createdAt": "2023-04-15T15:00:00Z",
+               "updatedAt": "2023-04-15T15:00:00Z"
+            }
+      // ... other borrows
+   ]}
+  ```
+
+  ### CSV File Export Endpoints:
+
+#### 1. Borrows In a Specific Period
+- **Endpoint:** `POST /export-admin-data`
+- **Description:**  Export borrows in a specific period CSV file.
+- **Expected Input:**
+  ```json
+  {
+    "type": "borrowsInSepcificPeriod",
+    "from": "2023-12-11",
+    "to": "2023-12-17"
+  }
+  ```
+- **Expected Output**
+on browser: downloaded CSV file
+
+on postman: CSV file code that needs to be saved with postman
+
+#### 2. Overdue Borrows 
+- **Endpoint:** `POST /export-admin-data`
+- **Description:**  Borrows That are Overdue from Last Month CSV file.
+- **Expected Input:**
+  ```json
+  {
+    "type": "getAllOverDueBorrowsLastMonth",
+  }
+  ```
+- **Expected Output**
+on browser: downloaded CSV file
+
+on postman: CSV file code that needs to be saved with postman
+
+#### 3. All Borrows from Last Month
+- **Endpoint:** `POST /export-admin-data`
+- **Description:**  Borrows from Last Month CSV file.
+- **Expected Input:**
+  ```json
+  {
+    "type": "getAllBorrowsLastMonth",
+  }
+  ```
+- **Expected Output**
+on browser: downloaded CSV file
+
+on postman: CSV file code that needs to be saved with postman
+
+### Rate Limiting
+
+The API is equipped with rate limiting to ensure fair usage and prevent abuse with 10 requests per minute max.
+
+
+
