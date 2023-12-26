@@ -9,7 +9,7 @@ const UserLogin = Model.define('UserLogin', {
     autoIncrement: true
   },
 
-  token: {
+  token: { // auth token
     type: DataType.TEXT
   },
 

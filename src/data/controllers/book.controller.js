@@ -3,7 +3,7 @@ import { Op } from 'sequelize';
 import Sequelize from "sequelize";
 
 
-export const createBook = async (req, res)=>{
+export const createBook = async (req, res)=>{ // create a new book
     try{
         const book = await Book.create({
             title: req.body.title,
@@ -40,7 +40,7 @@ export const createBook = async (req, res)=>{
     }
 };
 
-export const getBook = async (req, res)=>{
+export const getBook = async (req, res)=>{ // get a specific book
     try{
         const book = await Book.findOne({
             where: {
@@ -74,7 +74,7 @@ export const getBook = async (req, res)=>{
     }
 };
 
-export const getAllBooks = async (req, res)=>{
+export const getAllBooks = async (req, res)=>{ // get all books
     try{
         let whereCondition = {};
 
@@ -119,7 +119,7 @@ export const getAllBooks = async (req, res)=>{
     }
 };
 
-export const getOverdueBooks = async (req, res)=>{
+export const getOverdueBooks = async (req, res)=>{ // get all books with return date overdue
     try{  
         const currentDate = new Date();
 
@@ -154,7 +154,7 @@ export const getOverdueBooks = async (req, res)=>{
 };
 
 
-export const updateBook = async (req, res)=>{
+export const updateBook = async (req, res)=>{ // update a specific book
     try{
         const updateBook = await Book.update({
             title: req.body.title,
@@ -168,7 +168,7 @@ export const updateBook = async (req, res)=>{
         });
 
         if(req.body.author){
-            const updateAuthor = await Author.findOrCreate({
+            const updateAuthor = await Author.findOrCreate({ 
                 where: {
                     name: req.body.author
                 },
@@ -209,7 +209,7 @@ export const updateBook = async (req, res)=>{
     }
 };
 
-export const deleteBook = async (req, res)=>{
+export const deleteBook = async (req, res)=>{ // delete a specific book
     try{
         const deleteBook = await Book.destroy({
             where: {
