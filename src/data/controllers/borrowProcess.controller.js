@@ -2,7 +2,7 @@ import { Borrower, Book_Borrower, Book, Borrow } from "../models/index.js";
 import { Op } from 'sequelize';
 import Sequelize from "sequelize";
 
-export const borrowBook = async (req, res)=>{
+export const borrowBook = async (req, res)=>{ // borrow book
     try{
         const bookId = req.params.bookId, userId = req.body.userId;
         const returnDate = req.body.returnDate;
@@ -60,7 +60,7 @@ export const borrowBook = async (req, res)=>{
     }
 };
 
-export const returnBook = async (req, res)=>{
+export const returnBook = async (req, res)=>{ // return book to library
     try{
         const bookId = req.params.bookId, userId = req.body.userId;
 
@@ -117,7 +117,7 @@ export const returnBook = async (req, res)=>{
     }
 };
 
-export const getBooks = async (req, res)=>{
+export const getBooksForaSpecificBorrower = async (req, res)=>{ // get books for a specific borrower
     try{
         let whereCondition, userId = req.body.userId;
 

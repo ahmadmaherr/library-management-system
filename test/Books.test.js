@@ -6,7 +6,6 @@ const request = supertest(app);
 
 describe('testing books controllers', async function() {
     it('testing get all books', async function() {
-
         const res = await request.get("/api/Books");
         expect(res.status).to.equal(200);
     });
@@ -16,17 +15,17 @@ describe('testing books controllers', async function() {
         expect(res.status).to.equal(200);
     });
 
-    it('testing get all books', async function() {
+    it('testing creating a book', async function() {
         const res = await request.post("/api/Books");
         expect(res.status).to.equal(200);
     });
 
-    it('testing get all books', async function() {
+    it('testing updating a specific book', async function() {
         const res = await request.patch("/api/Books/1");
         expect(res.status).to.equal(200);
     });
 
-    it('testing get all books', async function() {
+    it('testing deleting a specific book', async function() {
         const res = await request.delete("/api/Books/1");
         expect(res.status).to.equal(200);
     });

@@ -1,12 +1,17 @@
+// modules
 import express from 'express';
 import cors from 'cors';
 import sequelize from './src/data/sequelize.js';
 import bodyParser from "body-parser";
-import csvRoutes from './src/data/csv/csvRoutes.js';
+import csvRoutes from './src/csv/csvRoutes.js';
+
 // routes
 import routes from './src/data/routes/index.js';
+
+// rate limiter middleware
 import { limiter } from './src/data/libs/middleware.js';
-import Book from './src/data/models/Book.js';
+
+// dummy data insertion handler
 import insertDummyData from './insertDummyData.js';
 
 export const app = express();
@@ -36,12 +41,6 @@ app.get('/', function (req, res){
     res.json({ message: "Hello world!" });
     console.log('listening on port ')
 });
-
-await Book.create({
-    title: "test",
-    ISBN: "32893289",
-    availableQuantity: 15
-})
 
 app.use("/api", routes);
 

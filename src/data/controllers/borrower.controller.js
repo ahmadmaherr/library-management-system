@@ -3,7 +3,7 @@ import { createJWToken } from "../libs/auth.js";
 import { Op } from 'sequelize';
 import Sequelize from "sequelize";
 
-export const createBorrower = async (req, res)=>{
+export const createBorrower = async (req, res)=>{ // create a new borrower 
     try{
         const [user, created] = await Borrower.findOrCreate({
             where: {
@@ -46,7 +46,7 @@ export const createBorrower = async (req, res)=>{
     }
 };
 
-export const getBorrower = async (req, res)=>{
+export const getBorrower = async (req, res)=>{ // get borrower data
     try{
         const borrower = await Borrower.findOne({
             where: {
@@ -79,7 +79,7 @@ export const getBorrower = async (req, res)=>{
     }
 };
 
-export const getAllBorrowers = async (req, res)=>{
+export const getAllBorrowers = async (req, res)=>{ // get all borrowers data
     try{
         let whereCondition = {};
 
@@ -122,7 +122,7 @@ export const getAllBorrowers = async (req, res)=>{
     }
 };
 
-export const updateBorrower = async (req, res)=>{
+export const updateBorrower = async (req, res)=>{ // update borrower data
     try{
         const updateBorrower = await Borrower.update({
             name: req.body.name,
@@ -155,7 +155,7 @@ export const updateBorrower = async (req, res)=>{
     }
 };
 
-export const deleteBorrower = async (req, res)=>{
+export const deleteBorrower = async (req, res)=>{ // delete borrower data
     try{
         const deleteBorrower = await Borrower.destroy({
             where: {

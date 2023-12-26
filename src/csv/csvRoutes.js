@@ -1,26 +1,25 @@
 import csv from 'csv-express';
 
-
 import {
   getBorrowsInSepcificPeriod,
   getAllOverDueBorrowsLastMonth,
   getAllBorrowsLastMonth
-} from "./borrowsData.js";
+} from "./csvData.js";
 
 const csvRoutes = (app) => {
-  app.get("/export-admin-data", async function(req, res) {
-    let type = req.body.type;
-    let from = req.body.from;
-    let to = req.body.to;
+  app.get("/export-csv-data", async function(req, res) {
+    let type = req.body.type; // csv file content type
     try {
       if (type) {
         let data = [];
 
-        if (type === "borrowsInSepcificPeriod") {
+        if (type === "borrowsInSepcificPeriod") { // borrowings data in a specific period
+          let from = req.body.from; // start date
+          let to = req.body.to; // end date
           data = await getBorrowsInSepcificPeriod(from, to);
-        } else if (type === "AllOverDueBorrowsLastMonth") {
+        } else if (type === "AllOverDueBorrowsLastMonth") { // overdue borrows from last month
           data = await getAllOverDueBorrowsLastMonth();
-        } else if (type === "getAllBorrowsLastMonth") {
+        } else if (type === "getAllBorrowsLastMonth") { // all borrows from last month
           data = await getAllBorrowsLastMonth();
         }
 

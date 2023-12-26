@@ -1,4 +1,4 @@
-import { Borrow } from "../models/index.js";
+import { Borrow } from "../data/models/index.js";
 import { Op } from "sequelize";
   
 export async function getBorrowsInSepcificPeriod(from, to) {

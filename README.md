@@ -6,7 +6,7 @@
 - Express
 - Mocha
 - Chai
-
+- JWT
 
 ## Get Started
 
@@ -69,9 +69,13 @@ This project require some prequesites and dependenscies to be installed, you can
     open package.json file and change line 5 from '"type": "commonjs",' to '"type": "module",'
 
 
-7. Run development server using docker compose using this command:
+7. Run development server using docker compose using this following command:
 
-   docker-compose up 
+   docker-compose up
+
+   If you apply any changes, use the following command:
+
+   docker-compose build 
 
 
 8. Run development server using nodemon by following thoses steps:
@@ -376,7 +380,7 @@ Certainly! Below is a documentation for the provided API endpoints with expected
 
 #### 3. Get Books
 - **Endpoint:** `GET api/borrowBook/getBooks`
-- **Description:** Retrieve a list of all available books for a specific burrower.
+- **Description:** Retrieve a list of all books borrowed by a specific borrower.
 - **Expected Output (Example):**
   ```json
    {
@@ -418,7 +422,7 @@ Certainly! Below is a documentation for the provided API endpoints with expected
   ### CSV File Export Endpoints:
 
 #### 1. Borrows In a Specific Period
-- **Endpoint:** `POST /export-admin-data`
+- **Endpoint:** `POST /export-csv-data`
 - **Description:**  Export borrows in a specific period CSV file.
 - **Expected Input:**
   ```json
@@ -434,7 +438,7 @@ on browser: downloaded CSV file
 on postman: CSV file code that needs to be saved with postman
 
 #### 2. Overdue Borrows 
-- **Endpoint:** `POST /export-admin-data`
+- **Endpoint:** `POST /export-csv-data`
 - **Description:**  Borrows That are Overdue from Last Month CSV file.
 - **Expected Input:**
   ```json
@@ -448,7 +452,7 @@ on browser: downloaded CSV file
 on postman: CSV file code that needs to be saved with postman
 
 #### 3. All Borrows from Last Month
-- **Endpoint:** `POST /export-admin-data`
+- **Endpoint:** `POST /export-csv-data`
 - **Description:**  Borrows from Last Month CSV file.
 - **Expected Input:**
   ```json

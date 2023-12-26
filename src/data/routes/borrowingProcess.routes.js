@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.route('/borrowBook/:bookId').post(verifyJWT_MW, borrowProcessController.borrowBook);
 router.route('/returnBook/:bookId').post(verifyJWT_MW, borrowProcessController.returnBook);
-router.route('/getBooks').get(verifyJWT_MW, borrowProcessController.getBooks); 
+router.route('/getBooks').get(verifyJWT_MW, borrowProcessController.getBooksForaSpecificBorrower); 
 
 export default router;
  
