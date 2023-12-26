@@ -96,6 +96,9 @@ This project require some prequesites and dependenscies to be installed, you can
 
    npm run test
 
+   note that test are implemented for books module only
+   
+
 ### Rate Limiting
 
 The API is equipped with rate limiting to ensure fair usage and prevent abuse with 10 requests per minute max.
